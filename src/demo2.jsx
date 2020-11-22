@@ -96,6 +96,20 @@ export default class demo2 extends Component {
                                     </div>
 
                                     <button type="submit" onClick={onSubmit}>提交</button>
+
+
+                                    <pre>
+                                    values: {JSON.stringify(values, null,2)}
+                                    </pre>
+
+                                    <pre>
+                                    errors: {JSON.stringify(errors, null,2)}
+                                    </pre>
+
+                                    <pre>
+                                    touched: {JSON.stringify(touched, null,2)}
+                                    </pre>
+
                                 </div>
 
                             )
