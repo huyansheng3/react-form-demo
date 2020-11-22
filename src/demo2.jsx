@@ -49,7 +49,7 @@ const formProps = {
         ],
     },
     // 触发的时机
-    validateTrigger: "onBlur,onChange",
+    validateTrigger: "onBlur",
     onSubmit: ({ values }) => {
         console.log(values)
     }

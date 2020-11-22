@@ -28,7 +28,9 @@ export default class Form extends Component {
                     }
                 }
             }, ()=>{
-                this.validate()
+                if(this.props.validateTrigger.indexOf("onChange") !== -1) {
+                    this.validate()
+                }
             })
         }
     }
@@ -45,7 +47,9 @@ export default class Form extends Component {
                     }
                 }
             }, ()=>{
-                this.validate()
+                if(this.props.validateTrigger.indexOf("onBlur") !== -1) {
+                    this.validate()
+                }
             })
 
 
@@ -54,19 +58,18 @@ export default class Form extends Component {
 
     validate = ()=>{
         const validator = this.validator
+        validator.validate(this.state.values, (errors, fields) => {
+            let results=  {
 
-        if(this.props.validateTrigger.indexOf("onBlur") !== -1) {
-            validator.validate(this.state.values, (errors, fields) => {
-                let results=  {
+            }
+            for(let i in fields) {
+                results[i]= fields[i].map(item=>item.message).join(",")
+            }
 
-                }
-                for(let i in fields) {
-                    results[i]= fields[i].map(item=>item.message).join(",")
-                }
+            this.setState({errors: results})
+          })
 
-                this.setState({errors: results})
-              })
-        }
+
     }
 
     onSubmit = ()=>{
