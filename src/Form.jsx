@@ -72,11 +72,19 @@ export default class Form extends Component {
 
     }
 
+    getField = filed=>{
+        return {
+            value: this.state.values[filed],
+            onChange: this.handleChange(filed),
+            onBlur: this.handleBlur(filed)
+        }
+    }
+
     onSubmit = ()=>{
         this.props.onSubmit(this.state)
     }
 
     render(){
-        return this.props.children({...this.state, handleChange: this.handleChange , handleBlur: this.handleBlur, onSubmit: this.onSubmit})
+        return this.props.children({...this.state, handleChange: this.handleChange , handleBlur: this.handleBlur, getField:this.getField, onSubmit: this.onSubmit})
     }
 }

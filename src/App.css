@@ -17,3 +17,14 @@
 color: red;
 margin-left: 5px;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.col {
+  padding-left: 10px;
+  padding-right: 10px;
+}
